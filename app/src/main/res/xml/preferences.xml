@@ -1,161 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:key="output" android:title="Output">
+    <PreferenceCategory android:key="output" android:title="Настройки экрана">
         <ListPreference
-            android:title="Display resolution mode"
+            android:title="Настройка разрешения экрана"
             android:key="displayResolutionMode"
-            android:defaultValue="native"
+            android:defaultValue="По умолчанию"
             android:entries="@array/displayResolutionVariants"
             android:entryValues="@array/displayResolutionVariants" />
 
         <SeekBarPreference
-            android:title="Display scale, %"
+            android:title="Масштабировать, %"
             android:key="displayScale"
             android:max="200"
             android:defaultValue="100" />
 
         <ListPreference
-            android:title="Display resolution"
+            android:title="Разрешение экрана"
             android:key="displayResolutionExact"
             android:defaultValue="1280x1024"
             android:entries="@array/displayResolution"
             android:entryValues="@array/displayResolution" />
 
         <EditTextPreference
-            android:title="Display resolution"
+            android:title="Разрешение экрана"
             android:key="displayResolutionCustom"
             android:defaultValue="1280x1024"
             android:summary="Example: 1280x1024" />
 
         <SwitchPreferenceCompat
-            android:title="Stretch to fit display"
+            android:title="Растянуть по размеру дисплея"
             android:defaultValue="false"
             android:key="displayStretch" />
 
         <SwitchPreferenceCompat
-            android:title="Reseed Screen While Soft Keyboard is open"
-            android:summary="The screen size will be adjusted while Soft Keyboard is open."
+            android:title="Заполнение экрана при открытой программной клавиатуре"
+            android:summary="Размер экрана будет изменен, пока открыта программная клавиатура."
             android:defaultValue="true"
             android:key="Reseed" />
 
         <SwitchPreferenceCompat
-            android:title="PIP Mode"
-            android:summary="Show app in picture-in-picture mode when home button or recents button is pressed"
+            android:title="PIP Режим"
+            android:summary="Показывать приложение в режиме «картинка в картинке» при нажатии кнопки «Домой» или кнопки «Недавние»"
             android:defaultValue="false"
             android:key="PIP" />
 
         <SwitchPreferenceCompat
-            android:title="Fullscreen on device display"
-            android:summary="Toggles immersive mode in your device display"
+            android:title="Полноэкранный режим на дисплее устройства"
+            android:summary="Включает/выключает режим захвата на дисплее вашего устройства."
             android:defaultValue="false"
             android:key="fullscreen" />
 
         <SwitchPreferenceCompat
-            android:title="Force landscape orientation"
+            android:title="Принудительная альбомная ориентация"
             android:defaultValue="false"
             android:key="forceLandscape" />
 
         <SwitchPreferenceCompat
-            android:title="Hide display cutout (if any)"
+            android:title="Скрыть вырез на дисплее (если есть)"
             android:defaultValue="false"
             android:key="hideCutout" />
         
         <SwitchPreferenceCompat
-	        android:title="Keep Screen On"
+	        android:title="Экран постоянно включен"
             android:defaultValue="true"
             android:key="keepScreenOn" />
     </PreferenceCategory>
-    <PreferenceCategory android:key="pointer" android:title="Pointer">
+    <PreferenceCategory android:key="pointer" android:title="Указатель">
         <ListPreference
-            android:title="Touchscreen input mode"
+            android:title="Режим сенсорного ввода"
             android:key="touchMode"
             android:defaultValue="1"
             android:entries="@array/touchscreenInputModesEntries"
             android:entryValues="@array/touchscreenInputModesValues" />
 
         <SwitchPreferenceCompat
-            android:title="Show stylus click options"
-            android:summary="Stylus touch override, left middle or right click (Only for the stylus)"
+            android:title="Показать параметры нажатия стилуса"
+            android:summary="Переопределение касания стилуса, щелчок левой кнопкой мыши по центру или правой кнопкой мыши (только для стилуса)"
             android:defaultValue="false"
             android:key="showStylusClickOverride" />
 
         <SwitchPreferenceCompat
-            android:title="Show mouse click helper overlay"
-            android:summary="Onscreen mouse buttons usable with touchpad"
+            android:title="Показать наложение помощника по щелчку мыши"
+            android:summary="Кнопки экранной мыши, используемые с сенсорной панелью"
             android:defaultValue="false"
             android:key="showMouseHelper" />
 
         <SwitchPreferenceCompat
-            android:title="Capture external mouse when possible"
-            android:summary="Intercept all hardware mouse events. Pointer is back to Android after pressing Escape key."
+            android:title="По возможности захватите внешнюю мышь"
+            android:summary="Перехват всех аппаратных событий мыши. Указатель возвращается к Android после нажатия клавиши Escape."
             android:defaultValue="false"
             android:key="pointerCapture" />
 
         <SwitchPreferenceCompat
-            android:title="Enable tap-to-move for touchpads"
+            android:title="Включить функцию «tap-to-move» для сенсорных панелей"
             android:defaultValue="false"
             android:key="tapToMove" />
     </PreferenceCategory>
-    <PreferenceCategory android:key="kbd" android:title="Keyboard">
+    <PreferenceCategory android:key="kbd" android:title="Клавиатура">
         <SwitchPreferenceCompat
-            android:title="Show additional keyboard"
-            android:summary="Show keyboard with additional keys."
+            android:title="Показать дополнительную клавиатуру"
+            android:summary="Показать клавиатуру с дополнительными клавишами."
             android:defaultValue="true"
             android:key="showAdditionalKbd" />
 
         <SwitchPreferenceCompat
-            android:title="Hide additional keyboard on Volume Down key press"
+            android:title="Скрыть дополнительную клавиатуру при нажатии клавиши уменьшения громкости"
             android:defaultValue="false"
             android:key="hideEKOnVolDown" />
 
         <SwitchPreferenceCompat
-            android:title="Show IME with external keyboard"
-            android:summary="Show software keyboard while hardware keyboard is connected. Requires WRITE_SECURE_SETTINGS permission."
+            android:title="Показать IME с внешней клавиатурой"
+            android:summary="Показывать программную клавиатуру при подключенной аппаратной клавиатуре. Требуется разрешение WRITE_SECURE_SETTINGS."
             android:defaultValue="false"
             android:key="showIMEWhileExternalConnected" />
 
         <SwitchPreferenceCompat
-            android:title="Prefer scancodes when possible"
-            android:summary="Let X server handle hardware keyboard layout (with DE settings or setxkbmap)."
+            android:title="По возможности отдавайте предпочтение скан-кодам"
+            android:summary="Позвольте X-серверу управлять раскладкой аппаратной клавиатуры (с настройками DE или setxkbmap)."
             android:defaultValue="false"
             android:key="preferScancodes"/>
 
         <SwitchPreferenceCompat
-            android:title="Intercept system shortcuts"
-            android:summary="Samsung Dex only. Allows interception of &quot;Alt+F4&quot;, &quot;Meta+D&quot;, &quot;Meta+E&quot;, etc. "
+            android:title="Перехватывать системные ярлыки"
+            android:summary="Только Samsung Dex. Позволяет перехватывать «Alt+F4», «Meta+D», «Meta+E» и т. д. "
             android:defaultValue="false"
             android:key="dexMetaKeyCapture" />
 
         <Preference
-            android:title="Enable Accessibility service for intercepting system shortcuts manually."
-            android:summary="Open Accessibility settings."
+            android:title="Включите службу специальных возможностей для ручного перехвата системных ярлыков."
+            android:summary="Откройте настройки специальных возможностей."
             android:key="enableAccessibilityService" />
 
         <SwitchPreferenceCompat
-            android:title="Enable Accessibility service for intercepting system shortcuts automatically."
-            android:summary="Requires WRITE_SECURE_SETTINGS permission."
+            android:title="Включите службу специальных возможностей для автоматического перехвата системных ярлыков."
+            android:summary="«Требуется разрешение WRITE_SECURE_SETTINGS."
             android:defaultValue="false"
             android:key="enableAccessibilityServiceAutomatically" />
 
         <SwitchPreferenceCompat
-            android:title="Filter out intercepted Win (Meta/Mod4) key."
-            android:summary="Allows you to use Dex shortcuts while intercepting."
+            android:title="Отфильтровывать перехваченную клавишу Win (Meta/Mod4)."
+            android:summary="Позволяет использовать сочетания клавиш Dex во время перехвата."
             android:defaultValue="false"
             android:key="filterOutWinkey" />
 
         <Preference
-            android:title="Extra keys config"
+            android:title="Конфигурация дополнительных клавиш"
             android:key="extra_keys_config" />
+         <Preference
+            android:title="Перевод от 🇺🇦ꜱᴀɴᴅᴇʀꜱ🇺🇦"
+            android:key="extra_keys" />
     </PreferenceCategory>
 
-    <PreferenceCategory android:key="other" android:title="Other">
+    <PreferenceCategory android:key="other" android:title="Другое">
         <SwitchPreferenceCompat
-            android:title="Automatic uploading clipboard to Android"
+            android:title="Автоматическая загрузка буфера обмена на Android"
             android:defaultValue="false"
             android:key="clipboardSync" />
 
         <Preference
-            android:title="Request notification permission"
+            android:title="Запрос разрешения на уведомление"
             android:key="requestNotificationPermission" />
     </PreferenceCategory>
 </PreferenceScreen>

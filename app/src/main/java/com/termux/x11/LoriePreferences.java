@@ -62,7 +62,7 @@ public class LoriePreferences extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeButtonEnabled(true);
-            actionBar.setTitle("Preferences");
+            actionBar.setTitle("Настройки");
         }
     }
 
@@ -103,18 +103,18 @@ public class LoriePreferences extends AppCompatActivity {
             scalePreference.setSeekBarIncrement(10);
             scalePreference.setShowSeekBarValue(true);
 
-            switch (p.getString("displayResolutionMode", "native")) {
-                case "scaled":
+            switch (p.getString("displayResolutionMode", "По умолчанию")) {
+                case "Масштабировать":
                     findPreference("displayScale").setVisible(true);
                     findPreference("displayResolutionExact").setVisible(false);
                     findPreference("displayResolutionCustom").setVisible(false);
                     break;
-                case "exact":
+                case "Точное значение":
                     findPreference("displayScale").setVisible(false);
                     findPreference("displayResolutionExact").setVisible(true);
                     findPreference("displayResolutionCustom").setVisible(false);
                     break;
-                case "custom":
+                case "Произвольное":
                     findPreference("displayScale").setVisible(false);
                     findPreference("displayResolutionExact").setVisible(false);
                     findPreference("displayResolutionCustom").setVisible(true);
@@ -133,10 +133,10 @@ public class LoriePreferences extends AppCompatActivity {
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P)
                 findPreference("hideCutout").setVisible(false);
 
-            findPreference("displayResolutionMode").setSummary(p.getString("displayResolutionMode", "native"));
+            findPreference("displayResolutionMode").setSummary(p.getString("displayResolutionMode", "По умолчанию"));
             findPreference("displayResolutionExact").setSummary(p.getString("displayResolutionExact", "1280x1024"));
             findPreference("displayResolutionCustom").setSummary(p.getString("displayResolutionCustom", "1280x1024"));
-            findPreference("displayStretch").setEnabled("exact".contentEquals(p.getString("displayResolutionMode", "native")) || "custom".contentEquals(p.getString("displayResolutionMode", "native")));
+            findPreference("displayStretch").setEnabled("Точное значение".contentEquals(p.getString("displayResolutionMode", "По умолчанию")) || "Произвольное".contentEquals(p.getString("displayResolutionMode", "По умолчанию")));
 
             int modeValue = Integer.parseInt(p.getString("touchMode", "1")) - 1;
             String mode = getResources().getStringArray(R.array.touchscreenInputModesEntries)[modeValue];
@@ -222,7 +222,7 @@ public class LoriePreferences extends AppCompatActivity {
         @Override
         public boolean onPreferenceChange(Preference preference, Object newValue) {
             String key = preference.getKey();
-            Log.e("Preferences", "changed preference: " + key);
+            Log.e("Настройки", "измененные настройки: " + key);
             handler.postDelayed(this::updatePreferencesLayout, 100);
 
             if ("showIMEWhileExternalConnected".contentEquals(key)) {
@@ -232,9 +232,9 @@ public class LoriePreferences extends AppCompatActivity {
                 } catch (Exception e) {
                     if (e instanceof SecurityException) {
                         new AlertDialog.Builder(requireActivity())
-                                .setTitle("Permission denied")
-                                .setMessage("Android requires WRITE_SECURE_SETTINGS permission to change this setting.\n" +
-                                            "Please, launch this command using ADB:\n" +
+                                .setTitle("Доступ запрещен")
+                                .setMessage("Для изменения этого параметра Android требуется разрешение WRITE_SECURE_SETTINGS.\n" +
+                                            "Пожалуйста, запустите эту команду с помощью ADB:\n" +
                                             "adb shell pm grant com.termux.x11 android.permission.WRITE_SECURE_SETTINGS")
                                 .setNegativeButton("OK", null)
                                 .create()
@@ -258,7 +258,7 @@ public class LoriePreferences extends AppCompatActivity {
                 try {
                     v = Integer.parseInt((String) newValue);
                 } catch (NumberFormatException | PatternSyntaxException ignored) {
-                    Toast.makeText(getActivity(), "This field accepts only numerics between 96 and 800", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Это поле принимает только числа от 96 до 800.", Toast.LENGTH_SHORT).show();
                     return false;
                 }
 
@@ -272,7 +272,7 @@ public class LoriePreferences extends AppCompatActivity {
                     Integer.parseInt(resolution[0]);
                     Integer.parseInt(resolution[1]);
                 } catch (NumberFormatException | PatternSyntaxException ignored) {
-                    Toast.makeText(getActivity(), "Wrong resolution format", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Неправильный формат разрешения", Toast.LENGTH_SHORT).show();
                     return false;
                 }
             }
@@ -289,9 +289,9 @@ public class LoriePreferences extends AppCompatActivity {
                     KeyInterceptor.shutdown();
                 if (requireContext().checkSelfPermission(WRITE_SECURE_SETTINGS) != PERMISSION_GRANTED) {
                     new AlertDialog.Builder(requireContext())
-                            .setTitle("Permission denied")
-                            .setMessage("Android requires WRITE_SECURE_SETTINGS permission to start accessibility service automatically.\n" +
-                                    "Please, launch this command using ADB:\n" +
+                            .setTitle("Доступ запрещен")
+                            .setMessage("Android требует разрешения WRITE_SECURE_SETTINGS для автоматического запуска службы специальных возможностей.\n" +
+                                    "Пожалуйста, запустите эту команду с помощью ADB:\n" +
                                     "adb shell pm grant com.termux.x11 android.permission.WRITE_SECURE_SETTINGS")
                             .setNegativeButton("OK", null)
                             .create()

@@ -123,20 +123,20 @@ public class LorieView extends SurfaceView implements InputStub {
         int height = getMeasuredHeight();
         int w = width;
         int h = height;
-        switch(preferences.getString("displayResolutionMode", "native")) {
-            case "scaled": {
+        switch(preferences.getString("displayResolutionMode", "По умолчанию")) {
+            case "Масштабироаать": {
                 int scale = preferences.getInt("displayScale", 100);
                 w = width / scale * 100;
                 h = height / scale * 100;
                 break;
             }
-            case "exact": {
+            case "Точное значение": {
                 String[] resolution = preferences.getString("displayResolutionExact", "1280x1024").split("x");
                 w = Integer.parseInt(resolution[0]);
                 h = Integer.parseInt(resolution[1]);
                 break;
             }
-            case "custom": {
+            case "Произвольное": {
                 try {
                     String[] resolution = preferences.getString("displayResolutionCustom", "1280x1024").split("x");
                     w = Integer.parseInt(resolution[0]);
@@ -161,8 +161,8 @@ public class LorieView extends SurfaceView implements InputStub {
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         if (preferences.getBoolean("displayStretch", false)
-              || "native".equals(preferences.getString("displayResolutionMode", "native"))
-              || "scaled".equals(preferences.getString("displayResolutionMode", "native"))) {
+              || "По умолчанию".equals(preferences.getString("displayResolutionMode", "По умолчанию"))
+              || "Масштабировать".equals(preferences.getString("displayResolutionMode", "По умолчанию"))) {
             getHolder().setSizeFromLayout();
             return;
         }
