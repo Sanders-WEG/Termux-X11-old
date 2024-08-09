@@ -11,6 +11,10 @@
             android:pathData="M 0 0 H 501 V 407 H 0 V 0 Z" />
         <group>
             <path
+                android:fillColor="#FF1110"
+                android:strokeWidth="1"
+                android:pathData="M 885,543 L 473,543 473,690 485,690 485,443 485,743 Z" />
+            <path
                 android:fillColor="#1E90FF"
                 android:strokeWidth="1"
                 android:pathData="M 13,15 L 154,201 154,203 13,390 85,390 190,249 226,297 297,297 85,15 13,15 Z" />
@@ -22,10 +26,6 @@
                 android:fillColor="#2E8B57"
                 android:strokeWidth="1"
                 android:pathData="M 367,15 L 296,15 205,136 240,183 367,15 367,15 Z" />
-            <path
-                android:fillColor="#FF1110"
-                android:strokeWidth="1"
-                android:pathData="M 885,543 L 473,543 473,690 485,690 485,443 485,743 Z" />
         </group>
     </group>
 </vector>
